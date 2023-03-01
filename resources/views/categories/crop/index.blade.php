@@ -51,9 +51,11 @@
                             <td>{{$crop->acerage}}</td>
                             <td>{{Str::Limit($crop->note,20,'...')}}</td>
                             <td>
+                               
                                 <button class="btn btn-success" type="submit">
                                     <a href="{{route('crop.edit',$crop->id)}}">Update</a>
                                 </button>
+                             
                             </td>
                             <td>
                                 <form action="{{route('crop.destroy',$crop->id)}}" method="post">

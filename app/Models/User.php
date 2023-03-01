@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function crops(){
         return $this->hasMany(Crop::class);
     }
+
+    public function animals(){
+        return $this->hasMany(Animal::class);
+    }
 }

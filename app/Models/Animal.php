@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Animal extends Model
 {
     use HasFactory;
-    // protected $fillable=['name','note','number'];
+    protected $fillable=['user_id','name','note','number'];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

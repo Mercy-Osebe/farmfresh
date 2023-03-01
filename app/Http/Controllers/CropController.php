@@ -77,6 +77,7 @@ class CropController extends Controller
     {
         //
         $crop=Crop::findorFail($id);
+        
         return view('categories.crop.edit',['crop'=>$crop]);
     }
 
@@ -91,6 +92,7 @@ class CropController extends Controller
 
         ]);
         $crop=Crop::findorFail($id);
+        $this->authorize('update',$crop);
         $crop->name=$request->name;
         $crop->duration=$request->duration;
         $crop->acerage=$request->acerage;
@@ -109,6 +111,7 @@ class CropController extends Controller
     {
         //
         $crop=Crop::findOrFail($id);
+        $this->authorize('delete',$crop);
         $crop->delete();
         return redirect('/category/crops')->with('delMsg','Crop deleted successgfully');
     }

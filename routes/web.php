@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/admin',[AdminController::class,'index'])->name('admin.index');
+Route::middleware('auth')->group(function(){
+    Route::get('/admin',[AdminController::class,'index'])->name('admin.index');  
+});
 
 
 
@@ -62,12 +64,7 @@ Route::put('/category/crop/{id}/edit',[CropController::class,'update'])->name('c
 
 // animal controller
 Route::get('/category/animal/create',[AnimalController::class,'create'])->name('animal.create');
-
-
-
-
-
-
+Route::delete('/category/animal/{id}',[AnimalController::class,'destroy'])->name('animal.destroy');
 
 Route::get('/category/animal/create',[AnimalController::class,'create'])->name('animal.create');
 Route::post('/category/animal/create',[AnimalController::class,'store'])->name('animal.store');
@@ -76,7 +73,6 @@ Route::get('/category/animal/index',[AnimalController::class,'index'])->name('an
 Route::get('/category/animal/{id}/edit',[AnimalController::class,'edit'])->name('animal.edit');
 Route::put('/category/animal/{id}',[AnimalController::class,'update'])->name('animal.update');
 
-Route::delete('/category/animal/{id}',[AnimalController::class,'destroy'])->name('animal.destroy');
 
 
 

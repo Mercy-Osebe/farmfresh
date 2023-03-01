@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,7 @@ class AnimalFactory extends Factory
         return [
             //
             'name'=>fake()->name(),
+            'user_id'=>User::pluck('id')->random(),
             'number'=>fake()->numberBetween(1,5),
             'note'=>fake()->paragraph(),
         ];

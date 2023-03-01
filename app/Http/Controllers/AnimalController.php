@@ -6,11 +6,16 @@ use App\Models\Animal;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class AnimalController extends Controller
 {
+    // protected function __construct(){
+    //     return $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
+     * 
      */
     public function index()
     {
@@ -41,6 +46,7 @@ class AnimalController extends Controller
         ]);
         $animal=new Animal();
         $animal->name=$request->name;
+        $animal->user_id=Auth::user()->id;
         $animal->number=$request->number;
         $animal->note=$request->note;
 
@@ -100,6 +106,7 @@ class AnimalController extends Controller
     {
         //
         $animal=Animal::findorFail($id);
+        $this->authorize('delete', $animal);
         $animal->delete();
         return redirect()->route('animal.index')->with('delMsg','Animal deleted successfully');
     }
