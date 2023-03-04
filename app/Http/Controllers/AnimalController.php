@@ -73,6 +73,7 @@ class AnimalController extends Controller
     {
         //
         $animal=Animal::findorFail($id);
+        
         return view('categories.animal.edit',['animal'=>$animal]);
     }
 
@@ -83,6 +84,7 @@ class AnimalController extends Controller
     {
         //
         $animal=Animal::findorFail($id);
+        $this->authorize('update',$animal);
         $request->validate([
             'name'=>['required'],
         ]);

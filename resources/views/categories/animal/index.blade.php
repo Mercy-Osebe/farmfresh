@@ -53,11 +53,13 @@
                             <td>{{Str::Limit($animal->note,20,'...')}}</td>
                             
                             <td>
-                            @can('update',$animal)
+                            
                                 <button class="btn btn-success">
                                     <a href="{{route('animal.edit',$animal->id)}}">update</a>
                                 </button>
-                            @endcan
+
+                           
+                            
                             </td>
                          
                             <td>

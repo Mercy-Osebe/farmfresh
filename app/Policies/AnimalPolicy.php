@@ -22,7 +22,6 @@ class AnimalPolicy
     public function view(User $user, Animal $animal): bool
     {
         //
-        return $user->id === $animal->user_id;
     }
 
     /**
@@ -31,8 +30,6 @@ class AnimalPolicy
     public function create(User $user): bool
     {
         //
-        
-        
     }
 
     /**
@@ -41,7 +38,9 @@ class AnimalPolicy
     public function update(User $user, Animal $animal): bool
     {
         //
-        return $user->id === $animal->user_id;
+        return $user->id === $animal->user_id? 
+        Response::allow()
+        : Response::deny('You do not own this post.');
     }
 
     /**
