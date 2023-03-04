@@ -64,6 +64,10 @@
         
       </x-admin-animal>
 
+      <x-admin-blog>
+        
+      </x-admin-blog>
+
       <!-- Divider -->
       <hr class="sidebar-divider">
 

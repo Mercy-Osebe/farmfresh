@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CropController;
 use App\Http\Controllers\FaunaController;
@@ -75,7 +76,17 @@ Route::put('/category/animal/{id}',[AnimalController::class,'update'])->name('an
 
 
 
+// blog routes
+Route::get('/blog',[BlogController::class,'create'])->name('blog.create');
+Route::post('/blog',[BlogController::class,'store'])->name('blog.store');
 
+
+Route::get('/blog/index',[BlogController::class,'index'])->name('blog.index');
+
+Route::delete('/blog/{blog}',[BlogController::class,'destroy'])->name('blog.destroy');
+
+Route::get('/blog/{blog}/edit',[BlogController::class,'edit'])->name('blog.edit');
+Route::put('/blog/{blog}',[BlogController::class,'update'])->name('blog.update');
 
 
 
