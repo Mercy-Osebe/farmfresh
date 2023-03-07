@@ -65,3 +65,25 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 # farmfresh
+
+## RBAC
+   $uesr_admin=User::class::find(1)
+    $uesr_farmer=User::class::find(2)
+    $uesr_customer=User::class::find(3)
+
+$admin=Role::class::create(['name'=>'Admin','slug'=>'admin'])
+$farmer=Role::class::create(['name'=>'Farmer','slug'=>'farmer'])
+$customer=Role::class::create(['name'=>'Customer','slug'=>'customer'])
+
+
+$view_dashboard=Permission::class::create(['name'=>'View Dashboard','slug'=>'view-dashboard'])
+$view_user=Permission::class::create(['name'=>'View User','slug'=>'view-user'])
+$view_crop=Permission::class::create(['name'=>'View Crop','slug'=>'view-crop'])
+
+$uesr_admin->roles()->attach($admin)
+$uesr_farmer->roles()->attach($farmer)
+$uesr_customer->roles()->attach($customer)
+
+$admin->permissions()->attach([$view_dashboard->id,$view_user->id,$view_crop->id])
+$farmer->permissions()->attach([$view_dashboard->id,$view_crop->id])
+$customer->permissions()->attach([$view_dashboard->id])

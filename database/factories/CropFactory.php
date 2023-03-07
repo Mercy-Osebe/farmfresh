@@ -23,7 +23,7 @@ class CropFactory extends Factory
             'user_id'=>User::pluck('id')->random(),
             'duration'=>fake()->numberBetween(2,12),
             'acerage'=>fake()->numberBetween(1,10),
-            'note'=>fake()->paragraph(),
+            'note'=>fake()->sentence(),
         ];
     }
 }

@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+ 
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -56,5 +57,28 @@ class User extends Authenticatable
     public function blogs(){
         return $this->hasMany(Blog::class);
     }
+
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
+    public function permissions(){
+        return $this->belongsToMany(Permission::class);
+    }
+
+
+    public function hasRole(...$user_roles){
+        foreach($this->roles as $role){
+            if(in_array($role->name,$user_roles)){
+                return true;
+            }
+            return false;
+
+
+        }
+
+    }
+
+
+
 
 }

@@ -55,18 +55,26 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
+      @if(Auth::user()->hasRole('Admin'))
       <x-admin-crop>
 
       </x-admin-crop>
+      @endif
+
 
       <!-- Nav Item - Utilities Collapse Menu -->
+      @if(Auth::user()->hasRole('Admin','Farmer'))
       <x-admin-animal>
-        
+
       </x-admin-animal>
+      @endif
+
+      @if(Auth::user()->hasRole('Customer'))
 
       <x-admin-blog>
-        
+
       </x-admin-blog>
+      @endif
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -278,9 +286,9 @@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
-         <x-admin-topnav>
+            <x-admin-topnav>
 
-         </x-admin-topnav>
+            </x-admin-topnav>
 
           </ul>
 
